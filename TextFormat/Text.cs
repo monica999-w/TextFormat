@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TextFormat.Interfaces;
 
 namespace TextFormat
 {
-    public class Text: ITextFormatter
+    public class Text: ITextComponent
     {
         private string _text;
 
@@ -15,9 +11,10 @@ namespace TextFormat
             _text = text;
         }
 
-        public void ApplyFormatting()
+        public string ApplyFormatting()
         {
-            Console.Write(_text);
+            return _text;
         }
+
     }
 }

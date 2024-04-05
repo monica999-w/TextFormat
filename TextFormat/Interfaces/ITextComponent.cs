@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextFormat
+namespace TextFormat.Interfaces
 {
-    public interface ITextFormatter
+    public interface ITextComponent
     {
-        void ApplyFormatting();
+        string ApplyFormatting();
     }
 }

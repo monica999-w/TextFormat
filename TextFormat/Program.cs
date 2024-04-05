@@ -1,22 +1,28 @@
 ﻿using TextFormat;
+using TextFormat.Decorator;
+using TextFormat.Interfaces;
 
 class Program
 {
     static void Main(string[] args)
     {
-        
-        TextFormatter text = new TextFormatter("This is a text");
 
-        
-        text.AddFormattingOption("bold");
-        text.AddFormattingOption("italic");
-        text.AddFormattingOption("underline");
-        text.AddFormattingOption("color");
-       // text.AddFormattingOption("reset");
+        ITextComponent text = new Text("This is a text");
 
-        text.ApplyFormatting();
+        text = new Bold(text);
+        text = new Italic(text);
+        text = new Underline(text);
+        text = new Color(text,"red");
 
-        
-        Console.ResetColor();
+
+        string formattedText = text.ApplyFormatting();
+        Console.WriteLine("Formatted Text: " + formattedText);
+
+        if (text is Color)
+            text = new Text(((Color)text).RemoveFormat());
+
+
+        string plainText = text.ApplyFormatting();
+        Console.WriteLine(" Text: " + plainText);
     }
 }
